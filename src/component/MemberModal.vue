@@ -255,7 +255,12 @@
     </div>
   </div>
 </template>
-
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
+  name: 'MemberModal' 
+});
+</script>
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import {

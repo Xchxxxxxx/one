@@ -220,12 +220,18 @@
     </div>
   </div>
 </template>
-
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
+  name: 'Login' // 组件名，可选
+});
+</script>
 <script setup lang="ts">
 import { ref, computed, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '../stores/userStore';
 import { LoginApi } from '../api/Login/LoginApi';
+
 
 // Props 支持 v-model 双向绑定
 interface Props {
@@ -265,7 +271,7 @@ const sliderWidth = ref(0);
 const startX = ref(0);
 const isVerified = ref(false);
 const qrExpired = ref(false); // 原页面保留
-let timer: NodeJS.Timeout | null = null;
+let timer: any = null;
 
 // Toast 提示
 const toast = ref({
@@ -400,7 +406,7 @@ const startCountdown = () => {
 };
 
 // 滑动验证
-const handleDragStart = (e: MouseEvent | TouchEvent) => {
+const handleDragStart = (e: any) => {
   e.preventDefault();
   startX.value = 'touches' in e ? e.touches[0].clientX : e.clientX;
   
@@ -410,7 +416,7 @@ const handleDragStart = (e: MouseEvent | TouchEvent) => {
   document.addEventListener('touchend', handleDragEnd);
 };
 
-const handleDragMove = (e: MouseEvent | TouchEvent) => {
+const handleDragMove = (e: any) => {
   const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
   const moveX = clientX - startX.value;
   

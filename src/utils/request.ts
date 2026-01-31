@@ -41,7 +41,7 @@ export default function() {
 
       // 自定义token过期判断逻辑
       const isTokenInvalid = () => {
-        const token = localStorage.getItem("token");
+        const token:any = localStorage.getItem("token");
         if (!token) return true;
         
         try {
@@ -118,7 +118,7 @@ export default function() {
         case 404:
           ElMessage.warning("请求的资源不存在");
           // 避免重复跳转404
-          if (router.currentRoute.path !== "/404") {
+          if (router.currentRoute.value.path !== "/404") {
             router.push("/404");
           }
           break;

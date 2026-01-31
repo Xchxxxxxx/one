@@ -225,7 +225,7 @@
                   <el-upload
                     action="#"
                     :show-file-list="false"
-                    :on-change="(file) => handleFileUpload('idCardFrontUrl', file)"
+                    :on-change="uploadWithField('idCardFrontUrl')"
                     :before-upload="beforeUpload"
                     accept="image/*"
                     class="w-full h-full"
@@ -245,7 +245,7 @@
                   <el-upload 
                     action="#" 
                     :show-file-list="false" 
-                    :on-change="(file) => handleFileUpload('idCardBackUrl', file)"
+                    :on-change="uploadWithField('idCardBackUrl')"
                     :before-upload="beforeUpload"
                     accept="image/*"
                   >
@@ -264,7 +264,7 @@
                   <el-upload 
                     action="#" 
                     :show-file-list="false" 
-                    :on-change="(file) => handleFileUpload('businessLicenseUrl', file)"
+                    :on-change="uploadWithField('businessLicenseUrl')"
                     :before-upload="beforeUpload"
                     accept="image/*"
                   >
@@ -538,7 +538,7 @@ const merchantId = ref('');
 const showQrCode = ref(false);
 
 // 表单数据初始化
-const form = reactive<MerchantForm>({
+const form:any = reactive<MerchantForm>({
   userId: 1,
   merchantName: '',
   merchantType: 0,
@@ -669,7 +669,7 @@ const beforeUpload = (file: File) => {
 };
 
 // 文件上传处理
-const handleFileUpload = (fieldName: keyof MerchantForm, file: UploadFile) => {
+const handleFileUpload = (file: UploadFile,fieldName: string) => {
   if (file.raw) {
     // 保存文件对象
     if (fieldName === 'idCardFrontUrl') {
@@ -689,6 +689,11 @@ const handleFileUpload = (fieldName: keyof MerchantForm, file: UploadFile) => {
     };
     reader.readAsDataURL(file.raw);
   }
+};
+const uploadWithField = (fieldName: string) => {
+  return (file: UploadFile) => {
+    handleFileUpload(file, fieldName);
+  };
 };
 
 // 商家类型变更处理（增强交互）

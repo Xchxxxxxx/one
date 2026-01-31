@@ -455,7 +455,7 @@ const router = useRouter();
 
 // 新增：语言切换功能
 const currentLang = ref('zh');
-const translations = {
+const translations:any = {
   zh: {
     memberPackage: '会员套餐',
     startUsing: '开始使用',
@@ -603,7 +603,7 @@ const handleDropdownCommand = (command: string) => {
 const isScrolled = ref(false);
 const scrollProgress = ref(0);
 
-const menuItems = [
+const menuItems:any = [
   { name: $t('heroTitle1').includes('全球贸易') ? '首页' : 'Home', path: '/' },
   { name: $t('heroTitle1').includes('全球贸易') ? '解决方案' : 'Solutions', path: '/solutions' },
   { name: $t('heroTitle1').includes('全球贸易') ? '商户入驻' : 'Merchant Entry', path: '/merchant' },
@@ -639,7 +639,6 @@ const reviews = [
 
 // 轮播控制
 const currentSlide = ref(0);
-const reviewSlider = ref<HTMLDivElement>(null);
 
 const nextSlide = () => {
   if (currentSlide.value < reviews.length - 1) {
