@@ -10,7 +10,7 @@ export default function() {
   let loadingInstance: any = null;
 
  
-  const baseURL ="https://e-commercesystem2-production.up.railway.app";
+  const baseURL ="https://two-production-80aa.up.railway.app";
 
   // 创建axios实例
   const request = axios.create({
