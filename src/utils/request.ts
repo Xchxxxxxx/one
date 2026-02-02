@@ -10,7 +10,7 @@ export default function() {
   let loadingInstance: any = null;
 
  
-  const baseURL ="http://localhost:8082";
+  const baseURL ="https://two-production-80aa.up.railway.app";
 
   // 创建axios实例
   const request = axios.create({
